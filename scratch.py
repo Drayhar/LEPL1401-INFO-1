@@ -234,7 +234,6 @@ def get_country(l, name):
 
 def table(filename_in, filename_out, width):
     with open(filename_in, "r") as file:
-        global ville
         ville = file.readlines()
         for i in range(len(ville)):
             ville[i].rstrip("\n")
@@ -256,7 +255,6 @@ def write(letter_template, name):
         for i in range(len(msg_list)):
             if msg_list[i] == "#":
                 msg_list[i] = "{0}"
-        global msg_string
         msg_string = " ".join(msg_list)
         msg_string.format(name)
     with open(letter_template, "w") as file:
@@ -303,6 +301,7 @@ def referee(score_file):
 
 def translate(data):
     code = ""
+    morse = ""
     for letter in data:
         try:
             code += morse[letter]
@@ -340,5 +339,3 @@ def get_max(filename):
 
 
 print("test")
-
-#test
