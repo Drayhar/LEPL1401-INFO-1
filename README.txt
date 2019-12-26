@@ -8,4 +8,4 @@ Le but n'est pas de recopier évidemment.
 Il est possible que des erreurs aient été comises, et le code est loin d'être optimisé. 
 J'ai appris au fur et à mesure.
 
-Vincent Bauffe, Q1 2019
+Drayhar, Q1 2019
