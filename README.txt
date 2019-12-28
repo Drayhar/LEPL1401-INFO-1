@@ -18,10 +18,7 @@ Exercices manquant :
 - 6.QBF
 
 - 7.Phase de réalisation
-- 7.Hogwarts house cup
 - 7.Anonymous information collection
-- 7.Apocalypse language translation
-- 7.Debt reminder
 - 7.Wrong iterations
 - 7.QBF
 
