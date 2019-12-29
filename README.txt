@@ -11,11 +11,6 @@ J'ai appris au fur et à mesure.
 Drayhar, Q1 2019
 
 Exercices manquant :
-- 5.QBF
-
-- 6.Représentation de tableau
-- 6.Hogwarts Admission letter
-- 6.QBF
 
 - 7.Phase de réalisation
 - 7.Anonymous information collection
