@@ -13,9 +13,6 @@ Drayhar, Q1 2019
 Exercices manquant :
 
 - 7.Phase de réalisation
-- 7.Anonymous information collection
-- 7.Wrong iterations
-- 7.QBF
 
 - 8.Phase de réalisation
 - 8.SMS store
