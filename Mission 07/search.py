@@ -89,14 +89,14 @@ def get_lines(words, index):
         print("Error get_lines")
 
 
-print(get_lines(["the", "oui", "republic"], create_index("test")))
+filename = input(
+    "To exit simply type 'exit'\nHello, please give the name of the file you want to analyze :\n")
 
-#filename = input("To exit simply type 'exit'\nHello, please give the name of the file you want to analyze :\n")
-
-# while False:
-#    instruction = input("Which are the words you are looking for ?\nPlease separate them with a space\n")
-#    if instruction == "exit":
-#       print("Thanks for using my tool")
-#       break
-#   words = instruction.split(" ")
-#   print("Here are all the lines with your words in them :", get_lines(words, create_index(filename)))
+while False:
+    instruction = input("Please separate them with a space\n")
+    if instruction == "exit":
+        print("Thanks for using my tool")
+        break
+    words = instruction.split(" ")
+    print("Here are all the lines with your words in them :",
+          get_lines(words, create_index(filename)))

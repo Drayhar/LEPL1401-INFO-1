@@ -3,26 +3,27 @@ Mission 8 : Les classes
 Vincent Bauffe, November 2019
 """
 
+
 class Duree:
 
-    def __init__(self, h, m, s):  #ok
+    def __init__(self, h, m, s):  # ok
         seconde = h * 3600 + m * 60 + s
         self.h = seconde // 3600
         self.m = (seconde % 3600) // 60
         self.s = ((seconde % 3600) % 60)
 
-    def toSecondes(self):  #ok
+    def toSecondes(self):  # ok
         return self.h * 3600 + self.m * 60 + self.s
 
-    def delta(self, d):  #ok
+    def delta(self, d):  # ok
         return self.toSecondes() - d.toSecondes()
 
-    def apres(self, d):  #ok
+    def apres(self, d):  # ok
         if self.delta(d) > 0:
             return True
         return False
 
-    def ajouter(self, d): #ok
+    def ajouter(self, d):  # ok
         temps = self.toSecondes() + d.toSecondes()
         self.h = temps // 3600
         self.m = (temps % 3600) // 60
@@ -67,7 +68,6 @@ class Album:
         return True
 
 
-
 with open("music-db.txt", "r") as file:
     all_music = file.read().split("\n")
     for i in range(len(all_music)):
@@ -82,9 +82,13 @@ while True:
         if music_count == len(all_music):
             break
         title = " ".join(all_music[music_count][0].split("_"))
-        artist = " ".join(all_music[music_count][1].split("_"))
         try:
-            length = Duree(0, int(all_music[music_count][-2]), int(all_music[music_count][-1]))
+            artist = " ".join(all_music[music_count][1].split("_"))
+        except:
+            pass
+        try:
+            length = Duree(
+                0, int(all_music[music_count][-2]), int(all_music[music_count][-1]))
             chanson = Chanson(title, artist, length)
         except:
             continue
