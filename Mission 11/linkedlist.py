@@ -37,16 +37,49 @@ class LinkedList:
         self.__head = node
         self.__length += 1
 
+    def get_reverse(self):
+        current = self.__head
+        msg = []
+        while current != None:
+            msg.append(current.value())
+            current = current.next()
+        return "".join(msg)
+
     def remove(self):
         if self.size() > 0:
             self.__head = self.first().next()
             self.__length -= 1
 
     def insert(self, s):
-        temp = self.first()
-        while temp != None:
-            if s > temp.value():
-                new = self.Node(s, temp)
+        if self.__head == None:
+            self.add(s)
+            return
+        elif s < self.__head.value():
+            self.add(s)
+            return
+        current = self.__head
+        while current.next() is not None:
+            if current.value() <= s <= current.next().value():
+                node = self.Node(s, current.next())
+                current.set_next(node)
+                self.__length += 1
+                return
+            current = current.next()
+        node = self.Node(s, None)
+        current.set_next(node)
+        self.__length += 1
+
+    def remove_from_end(self):
+        if self.__head is not None:
+            current = self.__head
+            if current.next() is None:
+                self.__head = None
+                self.__length -= 1
+                return
+            while current.next().next() is not None:
+                current = current.next()
+            current.set_next(None)
+            self.__length -= 1
 
     def print(self):
         """
