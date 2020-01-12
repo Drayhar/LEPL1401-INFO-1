@@ -117,5 +117,16 @@ class ClientList:
               son code pin, sinon ajoute à la liste un nouveau client ayant `name`
               comme username et `pin` comme code pin.
         """
-        self.name = name
-        self.newpin = pin
+        cl = self.last
+        user = None
+        while cl is not None:
+            if cl.data.getUserName() == name:
+                user = cl.data
+                break
+            cl = cl.link
+        if user is None:
+            user = Client(name, pin)
+            node = ClientList.Node(user, self.last)
+            self.last = node
+        user.setPin(pin)
+        return user
