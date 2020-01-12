@@ -12,8 +12,6 @@ Drayhar, Q1 2019
 
 Exercices manquant :
 
-- 7.Phase de réalisation
-
 - 8.Phase de réalisation
 - 8.SMS store
 - 8.Création d'objets depuis un fichier

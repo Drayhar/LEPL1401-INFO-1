@@ -3,6 +3,7 @@ This program allows you to scan through a file to find all the occurrences of a 
 Vincent Bauffe, November 2019
 """
 
+
 def readfile(filename):
     """
     This function open a file and return a list with all the lines
@@ -11,11 +12,9 @@ def readfile(filename):
     """
     try:
         with open(filename, "r") as file:
-            text = []
-            for line in file:
-                line = line.rstrip()
-                line = line.replace("\t", " ")
-                text.append(line)
+            text = file.readlines()
+            for i in range(len(text)):
+                text[i] = text[i].rstrip()
         return text
     except:
         print("Error readfile()")
@@ -35,6 +34,9 @@ def get_words(line):
                 lineL.remove(word)
         lineS = "".join(lineL)
         lineL = lineS.split(" ")
+        for word in lineL:
+            if word == "":
+                lineL.remove(word)
         return lineL
     except:
         print("Error get_words()")
@@ -49,7 +51,7 @@ def create_index(filename):
     try:
         index = {}
         whole_text = readfile(filename)
-        for line in whole_text:     #Creates my blank dictionnary
+        for line in whole_text:  # Creates my blank dictionnary
             for word in get_words(line):
                 index[word] = {}
         for line in whole_text:
@@ -57,7 +59,7 @@ def create_index(filename):
                 index[word][whole_text.index(line)] = 0
         for line in whole_text:
             for word in get_words(line):
-                index[word][whole_text.index(line)] +=1
+                index[word][whole_text.index(line)] += 1
         return index
     except:
         print("Error create_index()")
@@ -73,23 +75,28 @@ def get_lines(words, index):
     try:
         occurency = []
         new_list = []
-        for key in words:
-            for line in index[key]:
-                occurency.append(line)
-        for i in occurency:
-            if occurency.count(i) == len(words) and i not in new_list:
-                new_list.append(i)
+        try:
+            for key in words:
+                for line in index[key]:
+                    occurency.append(line)
+            for i in occurency:
+                if occurency.count(i) == len(words) and i not in new_list:
+                    new_list.append(i)
+        except:
+            pass
         return new_list
     except:
         print("Error get_lines")
 
 
-filename = input("To exit simply type 'exit'\nHello, please give the name of the file you want to analyze :\n")
+print(get_lines(["the", "oui", "republic"], create_index("test")))
 
-while False:
-    instruction = input("Which are the words you are looking for ?\nPlease separate them with a space\n")
-    if instruction == "exit":
-        print("Thanks for using my tool")
-        break
-    words = instruction.split(" ")
-    print("Here are all the lines with your words in them :", get_lines(words, create_index(filename)))
+#filename = input("To exit simply type 'exit'\nHello, please give the name of the file you want to analyze :\n")
+
+# while False:
+#    instruction = input("Which are the words you are looking for ?\nPlease separate them with a space\n")
+#    if instruction == "exit":
+#       print("Thanks for using my tool")
+#       break
+#   words = instruction.split(" ")
+#   print("Here are all the lines with your words in them :", get_lines(words, create_index(filename)))
